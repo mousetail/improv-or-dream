@@ -292,12 +292,12 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 div.appendChild(stats);
 
                 const shareButton = document.createElement('button');
-                shareButton.textContent = 'Copy Results';
+                shareButton.textContent = 'Copy Results for Sharing';
 
                 shareButton.addEventListener('click', ()=>{
 
                     navigator.clipboard.writeText(`I can tell the difference between a dream and improv ${numCorrect} out of ${sampleSize} times\n${
-                        result.map(i=>i?'🟩':'🟥').join('\n')
+                        result.map(i=>i?'🟩':'🟥').join(' ')
                     }\nGet your own score at https://mousetail.github.io/improv-or-dream`)
                 });
                 div.appendChild(shareButton);
