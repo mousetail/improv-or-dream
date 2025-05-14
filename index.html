@@ -30,7 +30,7 @@ Johnathan decides to just leave for work and leave his friends and family to fen
                     type: 'improv'
                 },
                 {
-                    text: `A group of rich people plan to earn money by starting fires to sell fire insurance, as well as shutting down the fire department. The driver overhears this plan, but is tempted when they offer him a share in the profits, though he eventually contacts the authorities under pressure from his wife.`,
+                    text: `A group of rich people plan to earn money by starting fires to sell fire insurance, as well as shutting down the fire department. The driver overhears this plan, but is tempted when they offer him a share in the profits. After talking to his wife, he decides to snich and tell the authorities.`,
                     type: 'improv'
                 },
                 {
@@ -141,7 +141,7 @@ The population of the astroid always stay on one side, until one day, Seth decid
                     linear-gradient(white 0%, white 20px, #AEC6CF 20px, #AEC6CF 24px, white 24px, white 84px, #AEC6CF 84px, #AEC6CF 88px, white 88px, white)
                     ;
 
-                min-width: 30rem;
+                min-width: calc(min(30rem, 90vw));
 
                 box-shadow: 0 0 5px 5px #0004;
 
@@ -199,6 +199,7 @@ The population of the astroid always stay on one side, until one day, Seth decid
             }
 
             .text {
+                box-shadow: 0 0 2.5px 2.5px #0002;
                 text-align: justify;
                 background-color: #ffffdd;
                 padding: 2rem;
@@ -233,7 +234,7 @@ The population of the astroid always stay on one side, until one day, Seth decid
             </div>
         </div>
         <script>
-            const sampleSize = 2;
+            const sampleSize = 10;
 
             const mainElement = document.getElementById('main');
 
@@ -321,14 +322,13 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 const options = document.createElement('div');
                 options.classList.add('options');
 
-                ["dream", "improv"].forEach(option=>{
-
+                ["Dream", "Improv"].forEach(option=>{
                     const optionElement = document.createElement('div');
                     optionElement.classList.add('option');
                     optionElement.textContent = option;
 
                     optionElement.addEventListener('click', async ()=>{
-                        if (question.type == option) {
+                        if (question.type == option.toLowerCase()) {
                             result.push(true);
                             optionElement.classList.add('correct');
                         } else {
