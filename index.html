@@ -2,196 +2,61 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>How normal am I?</title>
+        <title>Dream or Improv?</title>
         <script>
-            const questions = [
+            const dreams = [
                 {
-                    question: "Who would you rather go on a date with?",
-                    answers: [
-                        {
-                            text: "Frozone",
-                            score: "werewolf",
-                        },
-                        {
-                            text: "Marie Curie",
-                            score: "abnormal"
-                        },
-                        {
-                            text: "1000 Crabs",
-                            score: "normal"
-                        }
-                    ]
+                    text: `Two brothers, Jeff and Andrew are required to attend a cyber-security awareness training, but arrive very late. `+
+                    `As part of the training a clip from a comedy film directed by John Lennon is shown. Jeff loves this film but Andrew says `+
+                    `it's considered one of the worst films of the 80s. An older lady bites Jeff on his arm so the brothers flee to the children `+
+                    `playing area in the back of the room.`,
+                    type: 'dream'
                 },
                 {
-                    question: "Which Disney princess do you most relate to?",
-                    answers: [
-                        {
-                            text: "The green one",
-                            score: "normal"
-                        },
-                        {
-                            text: "The blue one",
-                            score: "werewolf"
-                        },
-                        {
-                            text: "The red one",
-                            score: 'abnormal'
-                        },
-                        {
-                            text: 'I don\'t recognize any of these options',
-                            score: 'normal'
-                        }
-                    ]
+                    text: `"Emily" is travelling with her father "Graham". While walking through the city, they encounter a museum that the Graham really wants to visit, but Emily really does not. Graham threatens to disown Emily if she doesn't go to the museum with her, so Emily decides to travel to the only place her father won't be able to find her: The North Pole.`,
+                    type: 'dream'
                 },
                 {
-                    question: 'How tall is the Eiffel Tower?',
-                    answers: [
-                        {
-                            text: '100 meters',
-                            score: 'werewolf'
-                        },
-                        {
-                            text: '1000 meters',
-                            score: 'normal'
-                        },
-                        {
-                            text: '10,000 meters',
-                            score: 'abnormal'
-                        }
-                    ]
+                    text: `A play is about to start in a very tall theater space, but the lighting is not yet set up properly. A group of lighting technicians need to parkour over a series of bars, catwalks, ladders, and cables to reach the lights. When they finally get to the top, the find a rival gang of technicians has already turned on the lights.`,
+                    type: 'dream'
                 },
                 {
-                    question: 'If you had to irreversibly turn into one animal, which animal would you pick?',
-                    answers: [
-                        {
-                            text: 'Chicken',
-                            score: 'normal',
-                        },
-                        {
-                            text: 'Lion',
-                            score: 'werewolf',
-                        },
-                        {
-                            text: 'Rhinoceros',
-                            score: 'abnormal'
-                        },
-                        {
-                            text: 'Fly',
-                            score: 'normal'
-                        }
-                    ]
+                    text: `"Johnathan" oversleeps and needs to hurry to be at work in time. As he tries to hurriedly make breakfast he realises he has no clean plates and needs to wash them first. He also forgot his mom was staying overnight and she needs breakfast too. Five other friends are there too and they all need clean plates and there is not enough food for all of them, and the supermarket is not yet open.
+Johnathan decides to just leave for work and leave his friends and family to fend for themselves.`,
+                    type: 'dream'
                 },
                 {
-                    question: 'Would you rather be forced to leave your home country and never be allowed back or never be able to leave again?',
-                    answers: [
-                        {
-                            text: "I'd rather stay forever",
-                            score: 'normal'
-                        },
-                        {
-                            text: "I'd rather leave forever",
-                            score: 'abnormal'
-                        }
-                    ]
+                    text: `A couple, "Irene" and "Max" has a problem that their car is too small. They decide to try out their growth machine even though it apparently failed catastrophically last time. After they turn every knob and lever the machine activates, but instead of the car it makes Irene and Max bigger. They decide to walk to grandma's house.`,
+                    type: 'improv'
                 },
                 {
-                    question: 'Which character from "Friends" do you most relate to?',
-                    answers: [
-                        {
-                            text: "Um, IDK the tall one",
-                            score: 'abnormal'
-                        },
-                        {
-                            text: 'The bartender',
-                            score: 'werewolf'
-                        },
-                        {
-                            text: 'The painting on the wall of the bar',
-                            score: 'abnormal'
-                        }
-                    ]
+                    text: `A group of rich people plan to earn money by starting fires to sell fire insurance, as well as shutting down the fire department. The driver overhears this plan, but is tempted when they offer him a share in the profits, though he eventually contacts the authorities under pressure from his wife.`,
+                    type: 'improv'
                 },
                 {
-                    question: 'If you knew you were going to die, what would your last words be?',
-                    answers: [
-                        {
-                            text: "\"The treasure is hidden in the... the...\"",
-                            score: 'abnormal'
-                        },
-                        {
-                            text: "\"It was me who took the last cookie at the reunion in 2007\"",
-                            score: 'normal'
-                        },
-                        {
-                            text: '"Find me a partner and tell them I love them"',
-                            score: 'werewolf'
-                        },
-                        {
-                            text: '"I\'m not going to die, I\'m going to live forever\"',
-                            score: 'normal'
-                        }
-                    ]
+                    text: `A couple runs a flower shop, but sales are down due to the couple upstairs breaking up. They decide to retire early. However, they discover that they don't really have much in common except for flowers and soon also break up.`,
+                    type: 'improv'
                 },
                 {
-                    question: 'Physically, how far apart are the furthest two languages you speak?',
-                    answers: [
-                        {
-                            text: 'I only speak one language',
-                            score: 'normal'
-                        },
-                        {
-                            text: '<1000 km',
-                            score: 'abnormal'
-                        },
-                        {
-                            text: '1000 - 2000 km',
-                            score: 'werewolf'
-                        },
-                        {
-                            text: '2000+ km',
-                            score: 'abnormal'
-                        }
-                    ]
+                    text: `Two friends, "Steward" and "Carly" are sailing. However, it's getting late and they can't steer properly. Try try to navigate by the stars but realise neither of them actually knows how to do that. They spot the shore in the distance but find their home made rudder is broken and they are unable to turn. The boat begins to take on water.`,
+                    type: 'improv'
                 },
                 {
-                    question: 'You can swap the names of any two countries on Earth. Which ones do you pick?',
-                    answers: [
-                        {
-                            text: 'Uruguay and Paraguay',
-                            score: 'abnormal'
-                        },
-                        {
-                            text: 'Austria and Australia',
-                            score: 'normal'
-                        },
-                        {
-                            text: 'India and Indonesia',
-                            score: 'werewolf'
-                        },
-                        {
-                            text: 'United Kingdom and United States',
-                            score: 'abnormal'
-                        },
-                        {
-                            text: 'North Korea and South Korea',
-                            score: 'normal'
-                        }
-                    ]
+                    text: 'A party of friends wants to explore a house that is rumoured to be haunted. The house is tiny. Everyone who looks through the windows of the house sees their biggest fear. They must not touch the house. One party member touches the house and the house swallows her.',
+                    type: 'improv',
                 },
                 {
-                    question: 'How many Delfts blue tiles do you own?',
-                    answers: [
-                        {
-                            text: 'At least one',
-                            score: 'werewolf',
-                        }, {
-                            text: 'None, but I want one',
-                            score: 'normal'
-                        }, {
-                            text: 'I prefer Amstardam\'s red',
-                            score: 'abnormal'
-                        }
-                    ]
+                    text: 'A technician "Elroy" makes some sort of mistake and a rocket crashes. Elroy has to replace the astronauts and travel to the Moon by himself. He realises he needs to find a gift to give to his sister. While trying to find an appropriate rock he is interrupted by aliens.',
+                    type: 'improv',
+                },
+                {
+                    text: 'Three friends "Victor", "Von" and "Vanessa" are giving their friend "Vladimir" a viking burial (meaning putting them on a boat and setting the boat on fire). However, they have no lighters on them as they all recently quit smoking. They walk around the beach for a bit until they find a smoker who lends them a lighter. In honour of their friend, they decide to all light up a cigarette one last time. It ends before they can actually light the boat.',
+                    type: 'improv'
+                },
+                {
+                    text: `"Seth" lives on a small astroid named New Sibera because of it's coldness. The astroid had sloped gravity so you would tend to slide to one corner.
+The population of the astroid always stay on one side, until one day, Seth decides to bravey travel to the other side for the first time. The other side is a tropical jungle full of talking apes and dophins. At first, they where aggresive but Seth learns to communicate and then lives there for a few years.`,
+                    type: 'dream'
                 }
             ]
 
@@ -203,23 +68,11 @@
                 padding: 0;
 
                 &:nth-child(1) {
-                    --index-color: green;
+                    --index-color: gold;
                 }
 
                 &:nth-child(2) {
-                    --index-color: blue;
-                }
-
-                &:nth-child(3) {
-                    --index-color: #888800;
-                }
-
-                &:nth-child(4) {
-                    --index-color: violet;
-                }
-
-                &:nth-child(5) {
-                    --index-color: red;
+                    --index-color: #A2E4B8;
                 }
             }
 
@@ -237,6 +90,7 @@
                 position: absolute;
                 left: 0;
                 top: 0;
+                text-align: center;
 
                 padding: 4rem;
             }
@@ -275,15 +129,50 @@
 
             button, .option {
                 padding: 2rem;
-                background-color: var(--index-color);
-                color: white;
+                color: black;
                 border: none;
                 font-size: 2rem;
-                border-radius: 4rem;
                 cursor: pointer;
 
+                border: 4px solid var(--index-color);
+
+                background:
+                linear-gradient(90deg, transparent 0%, transparent 100px, #ff6961 100px, #ff6961 108px, transparent 108px, transparent),
+                    linear-gradient(white 0%, white 20px, #AEC6CF 20px, #AEC6CF 24px, white 24px, white 84px, #AEC6CF 84px, #AEC6CF 88px, white 88px, white)
+                    ;
+
+                min-width: 30rem;
+
+                box-shadow: 0 0 5px 5px #0004;
+
+                transition: transform 0.25s linear, box-shadow 0.25s linear;
+
                 &:hover {
-                    background-color: black;
+                    transform: translate(0, -10px);
+                    box-shadow: 0 10px 5px 5px #0004;
+                }
+
+                &:before {
+                    content: '';
+                    width: 2rem;
+                    height: 2rem;
+                    transform: translate(-30vw, 0);
+
+                    transition: transform 0.3s ease-out;
+
+                    display: inline-block;
+                    background-size: 100% 100%;
+                }
+
+                &.incorrect:before {
+                    transform: translate(0, 0);
+                    background-image: url('./incorrect.svg');
+                }
+
+                &.correct:before {
+
+                    transform: translate(0, 0);
+                        background-image: url('./correct.svg');
                 }
             }
 
@@ -295,62 +184,82 @@
 
             .stats {
                 display: flex;
-                flex-direction: column;
-                gap: 2rem;
+                flex-direction: row;
+                gap: 1rem;
 
                 & .stat {
-                    height: 3rem;
-                    position: relative;
-                    background-color: black;
-                    overflow: hidden;
-
-                    --stat-color: var(--index-color);
-
-                    & .stat-name {
-                        position: absolute;
-                        font-size: 2rem;
-                        left: 0;
-                        top: 0.5 rem;
-                        z-index: 5;
-                        color: white;
-                        text-align: center;
-                        width: 100%;
-                    }
-
-                    & .bar {
-                        position: absolute;
-                        left: 0;
-                        top: 0;
-                        height: 3rem;
-                        background-color: var(--stat-color);
-                    }
+                    width: 2rem;
+                    height: 2rem;
+                    background-size: 100% 100%;
                 }
+            }
+
+            .max-width {
+                max-width: 52rem;
+            }
+
+            .text {
+                text-align: justify;
+                background-color: #ffffdd;
+                padding: 2rem;
+            }
+
+            .text::first-letter {
+                float: left;
+                font-size: 2rem;
+                line-height: 0.65;
+                margin: 0.1em 0.1em 0.2em 0;
             }
         </style>
     </head>
     <body>
         <div id="main">
             <div class="question title-screen">
-                <h1>How normal are you?</h1>
+                <h1>Was it a dream or an improv scene?</h1>
+
+                <div class="max-width">
+                    <p>My parents always ask me about what I did at improv and it's hard to explain. Sometimes I
+                    feel it would be easier to explain my dreams than whatever scene we did together. Or are they the same? Can you tell a dream from improv?
+                    </p>
+                </div>
+
+                <div class="max-width">
+                    <p>Dreams come from myself and a few friends.</p>
+                </div>
+
+                <p>All names have been anonomized, and plots summarized as well as I can remember them.</p>
 
                 <button id="start-button">Start</button>
             </div>
         </div>
         <script>
+            const sampleSize = 2;
+
             const mainElement = document.getElementById('main');
 
-            const default_scores = Object.freeze({
-                normal: 0,
-                abnormal: 0,
-                werewolf: 0
-            });
+            const result = [];
 
             let question_index = -1;
-            let scores = {...default_scores};
+            let questions = [];
+
+            const sleep = (delay) => {
+                return new Promise((resolve) => {
+                    window.setTimeout(resolve, delay)
+                })
+            }
 
             const start = () => {
                 question_index = -1;
-                scores = {...default_scores};
+                result.length = 0;
+
+                let dreams2 = [...dreams];
+                questions = [];
+                for (let i=0; i<sampleSize; i++) {
+                    questions.push(...dreams2.splice(Math.floor(Math.random() * (dreams2.length - 1)), 1));
+                    console.log(questions.length);
+                }
+
+                console.log(questions);
 
                 nextQuestion();
             }
@@ -359,33 +268,26 @@
                 const div = document.createElement('div');
                 div.classList.add('question', 'question-enter');
 
-                const scoresEntries = Object.entries(scores);
-                const bestScore = scoresEntries.reduce((a,b)=>a[1]>b[1]?a:b);
+                const numCorrect = result.reduce((a,b)=>a+(b?1:0), 0);
 
                 const title = document.createElement('h1');
-                title.textContent = `You are mostly ${bestScore[0]}`;
+                title.textContent = `You scored ${numCorrect}/${sampleSize}`;
 
                 div.appendChild(title);
 
                 const stats = document.createElement('div');
                 stats.classList.add('stats');
-
-                for (let [statName, score] of scoresEntries) {
-                    const stat = document.createElement('div');
-                    stat.classList.add('stat');
-                    
-                    const name = document.createElement('div');
-                    name.classList.add('stat-name');
-                    name.textContent = statName;
-                    stat.appendChild(name);
-
-                    const bar = document.createElement('div');
-                    bar.classList.add('bar');
-                    bar.style.width = `${score * 100 / questions.length}%`;
-
-                    stat.appendChild(bar);
-                    stats.appendChild(stat);
-                }
+                result.forEach(
+                    (v) => {
+                        const div = document.createElement('div');
+                        div.classList.add('stat');
+                        div.style.backgroundImage = v ? 'url("./correct.svg")' : 'url("./incorrect.svg")';
+                        stats.appendChild(
+                            div
+                        )
+                    }
+                );
+                
                 div.appendChild(stats);
 
                 const shareButton = document.createElement('button');
@@ -393,13 +295,9 @@
 
                 shareButton.addEventListener('click', ()=>{
 
-                    navigator.clipboard.writeText(`I am mostly ${bestScore[0]}\n${
-                        scoresEntries.map(
-                            ([statName, score], index) => {
-                                return `${statName}${' '.repeat(10-statName.length)} ${['🟥', '🟩', '🟫'][index].repeat(score)}`
-                            }
-                        ).join('\n')
-                    }\nGet your own score at https://mousetail.github.io/how-normal-am-i`)
+                    navigator.clipboard.writeText(`I can tell the difference between a dream and improv ${numCorrect} out of ${sampleSize} times\n${
+                        result.map(i=>i?'🟩':'🟥').join('\n')
+                    }\nGet your own score at https://mousetail.github.io/improv-or-dream`)
                 });
                 div.appendChild(shareButton);
 
@@ -411,24 +309,34 @@
                 newQuestionDiv.classList.add('question', 'question-enter');
 
                 const title = document.createElement('h1');
-                title.textContent = questions[question_index].question;
+                title.textContent = "Dream or Improv";
 
                 newQuestionDiv.appendChild(title);
+
+                const text = document.createElement('div');
+                text.classList.add('text', 'max-width');
+                text.textContent = question.text;
+                newQuestionDiv.appendChild(text);
 
                 const options = document.createElement('div');
                 options.classList.add('options');
 
-                questions[question_index].answers.forEach(option=>{
-                    if (!Object.prototype.hasOwnProperty.call(default_scores, option.score)) {
-                        throw new Error('question missing '+options.score+' '+option.text);
-                    };
+                ["dream", "improv"].forEach(option=>{
 
                     const optionElement = document.createElement('div');
                     optionElement.classList.add('option');
-                    optionElement.textContent = option.text;
+                    optionElement.textContent = option;
 
-                    optionElement.addEventListener('click', ()=>{
-                        scores[option.score]+=1;
+                    optionElement.addEventListener('click', async ()=>{
+                        if (question.type == option) {
+                            result.push(true);
+                            optionElement.classList.add('correct');
+                        } else {
+                            result.push(false);
+                            optionElement.classList.add('incorrect');
+                        };
+                        await sleep(500);
+                        
                         nextQuestion();
                     });
                     options.appendChild(optionElement);
