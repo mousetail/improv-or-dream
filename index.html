@@ -146,6 +146,7 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 box-shadow: 0 0 5px 5px #0004;
 
                 transition: transform 0.25s linear, box-shadow 0.25s linear;
+                vertical-align: middle;
 
                 &:hover {
                     transform: translate(0, -10px);
@@ -170,9 +171,18 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 }
 
                 &.correct:before {
-
                     transform: translate(0, 0);
-                        background-image: url('./correct.svg');
+                    background-image: url('./correct.svg');
+                }
+
+                &.share:before {
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    margin-right: 1rem;
+                    transition: none;
+                    transform: translate(0, 0);
+                    background-image: url('./share.svg');
+                    vertical-align: middle;
                 }
             }
 
@@ -382,7 +392,8 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 div.appendChild(link);
 
                 const shareButton = document.createElement('button');
-                shareButton.textContent = 'Copy Results for Sharing';
+                shareButton.classList.add('share');
+                shareButton.textContent = 'Copy Results';
 
                 shareButton.addEventListener('click', ()=>{
 
