@@ -255,17 +255,22 @@ The population of the astroid always stay on one side, until one day, Seth decid
             <div class="question title-screen">
                 <h1>Was it a dream or an improv scene?</h1>
 
-                <div class="max-width">
-                    <p>My parents always ask me about what I did at improv and it's hard to explain. Sometimes I
-                    feel it would be easier to explain my dreams than whatever scene we did together. Or are they the same? Can you tell a dream from improv?
+                <div class="text max-width">
+                    <p>
+                        Is improv just a multiplayer dream? Both follow every whim by a player, only worrying if they make sense later. Both must keep going at any cost, no time to rest. No going back.
+                        Both tend to increase what is already there. A stressed dream will create ever more sources of stress, and improv is the same. Both often have nonsensical plots that take
+                        a background role behind emotions and characters.
+                    </p>
+
+                    <p>
+                        This excercise is a test. Are dreams distinguisable from improv? I have compiled a list of dreams and improv scenes I can remember. Can you tell which is which?
+                    </p>
+
+                    <p>
+                        Names have been added or changed in all the stories. My memory is imperfect so if you saw one of the improv plots or the dreams and spot a mistake, please let me know.
+                        You will be shown a random subset of the longer list of stories I compiled.
                     </p>
                 </div>
-
-                <div class="max-width">
-                    <p>Dreams come from myself and a few friends.</p>
-                </div>
-
-                <p>All names have been anonomized, and plots summarized as well as I can remember them.</p>
 
                 <button id="start-button">Start</button>
             </div>
@@ -416,7 +421,7 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 newQuestionDiv.classList.add('question', 'question-enter');
 
                 const title = document.createElement('h1');
-                title.textContent = "Dream or Improv";
+                title.textContent = `Dream or Improv, question ${question_index+1} of 10`;
 
                 newQuestionDiv.appendChild(title);
 
