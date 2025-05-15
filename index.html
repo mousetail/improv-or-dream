@@ -206,11 +206,37 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 padding: 2rem;
             }
 
-            .text::first-letter {
+            .text p:first-child:first-letter {
                 float: left;
-                font-size: 2rem;
+                font-size: 3rem;
                 line-height: 0.65;
-                margin: 0.1em 0.1em 0.2em 0;
+                margin: 0.1em 0.1em 0.1em 0;
+            }
+
+            .histogram {
+                height: 10rem;
+                width: 20rem;
+                display: flex;
+                align-items: end;
+                margin: auto;
+                border-bottom: 4px solid gold;
+
+                & .bar {
+                    background-color: gold;
+                    width: 10%;
+
+                    &.bar-you {
+                        background-color: #A2E4B8;
+                    }
+                }
+            }
+
+            p + p{
+                margin-top: 1rem;
+            }
+
+            .small {
+                font-size: 0.5rem;
             }
         </style>
     </head>
@@ -237,12 +263,16 @@ The population of the astroid always stay on one side, until one day, Seth decid
         <script>
             const sampleSize = 10;
 
+            const googleUrl = 'https://script.google.com/macros/s/AKfycbwy_xarWHBehEoZ3JR0xO_PQ2Q2hWTT90kj6v6NBdLBzzM9m89wlZdj1mqjIIMzKKZzEQ/exec';
+
             const mainElement = document.getElementById('main');
 
             const result = [];
 
             let question_index = -1;
             let questions = [];
+
+            let histogram = undefined;
 
             const sleep = (delay) => {
                 return new Promise((resolve) => {
@@ -272,10 +302,38 @@ The population of the astroid always stay on one side, until one day, Seth decid
 
                 const numCorrect = result.reduce((a,b)=>a+(b?1:0), 0);
 
+                fetch(
+                    googleUrl,
+                    {
+                        method: 'post',
+                        body: JSON.stringify({
+                            number: numCorrect
+                        })
+                    }
+                ).then(
+                    e => {
+                        if (e.ok) {
+                            console.log("Submission Successful");
+                        } else {
+                            console.error("Submission Failed")
+                        }
+                    }
+                );
+
                 const title = document.createElement('h1');
                 title.textContent = `You scored ${numCorrect}/${sampleSize}`;
-
                 div.appendChild(title);
+
+                const subtitle = document.createElement('p');
+                histogram.then(
+                    histogram => {
+                        const total = histogram.reduce((a,b)=>a+b);
+                        const less = histogram.slice(0, Math.max(0, numCorrect-1)).reduce((a,b)=>a+b);
+
+                        subtitle.textContent = `Better than ${Math.floor(100 * less / total)}% of respondants`
+                    }
+                )
+                div.appendChild(subtitle);
 
                 const stats = document.createElement('div');
                 stats.classList.add('stats');
@@ -291,6 +349,31 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 );
                 
                 div.appendChild(stats);
+
+                let histogramElement = document.createElement('div');
+                histogramElement.classList.add('histogram');
+
+                histogram.then((histogram)=>{
+                    const histogramMaxSize = histogram.reduce((a,b)=>a>b?a:b);
+                    histogram[numCorrect - 1]+=1;
+
+                    histogram.forEach((e, index)=>{
+                        const bar = document.createElement('div');
+                        bar.classList.add('bar');
+
+                        if (index == numCorrect - 1) {
+                            bar.classList.add('bar-you');
+                        }
+
+                        console.log(`${Math.floor(e*100/histogramMaxSize)}% ${histogramMaxSize} ${JSON.stringify(histogram)}`);
+
+                        bar.style.height = `${Math.floor(e*100/histogramMaxSize)}%`;
+                        histogramElement.appendChild(bar);
+                    })
+
+                });
+
+                div.appendChild(histogramElement);
 
                 const link = document.createElement('a');
                 link.target='_blank';
@@ -309,6 +392,11 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 });
                 div.appendChild(shareButton);
 
+                const credits = document.createElement('div');
+                credits.classList.add('small');
+                credits.textContent = "Thanks to Lyxal, Red, DL, Seggan, Reinier among others";
+                div.appendChild(credits);
+
                 return div;
             }
 
@@ -323,7 +411,13 @@ The population of the astroid always stay on one side, until one day, Seth decid
 
                 const text = document.createElement('div');
                 text.classList.add('text', 'max-width');
-                text.textContent = question.text;
+                question.text.split('\n').forEach(
+                    i=>{
+                        const paragraph = document.createElement('p');
+                        paragraph.textContent = i;
+                        text.appendChild(paragraph);
+                    }
+                )
                 newQuestionDiv.appendChild(text);
 
                 const options = document.createElement('div');
@@ -356,6 +450,16 @@ The population of the astroid always stay on one side, until one day, Seth decid
                 const currentQuestion = mainElement.firstElementChild;
 
                 question_index += 1;
+
+                if (histogram === undefined && question_index > sampleSize * 0.5) {
+                    histogram = fetch(googleUrl).then(
+                        k => k.json()
+                    ).then(
+                        m => {
+                            return Array.from({length: 10}).map((i,j)=>m[`${j+1}`]);
+                        }
+                    )
+                }
 
                 let newQuestionDiv;
                 if (question_index >= questions.length)  {
